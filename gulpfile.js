@@ -5,7 +5,7 @@ var imagemin = require('gulp-imagemin');
 gulp.task('sass', function () {
   return gulp.src('src/styles/**/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./css'));
+    .pipe(gulp.dest('dist/css/.css'));
 });
 
 gulp.task("images", function (){
