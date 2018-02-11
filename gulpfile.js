@@ -17,7 +17,7 @@ gulp.task("images", function (){
 
 gulp.task('javascript', function() {  
   return gulp.src('src/scripts/*.js')
-    .pipe(concat('all.js'))
+    .pipe(concat('build.js'))
     .pipe(gulp.dest('dist/javascript.js'))
 });
 
