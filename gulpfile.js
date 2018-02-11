@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var imagemin = require('gulp-imagemin');
 var concat = require('gulp-concat');
+var htmlmin = require('gulp-htmlmin');
  
 gulp.task('sass', function () {
   return gulp.src('src/styles/**/*.scss')
@@ -18,13 +19,20 @@ gulp.task("images", function (){
 gulp.task('javascript', function() {  
   return gulp.src('src/scripts/*.js')
     .pipe(concat('build.js'))
-    .pipe(gulp.dest('dist/javascript.js'))
+    .pipe(gulp.dest('dist/javascript'))
 });
 
+gulp.task('html', function() {
+  return gulp.src('src/*.html')
+    .pipe(htmlmin())
+    .pipe(gulp.dest('dist'));
+});
 
-gulp.task('watch', ['sass', 'images', "javascript"], function() {
+gulp.task('watch', ['sass', 'images', "javascript", "html"], function() {
     gulp.watch(['src/styles/**/*.scss'], ['sass']);
     gulp.watch(['src/images/**/*'], ['images']);
+    gulp.watch(["src/scripts/*.js"], ["javascript"]);
+    gulp.watch(["src/*.html"], ["html"]);
 });
 
 gulp.task("default", ['watch']); 
