@@ -7,7 +7,7 @@ var htmlmin = require('gulp-htmlmin');
 gulp.task('sass', function () {
   return gulp.src('src/styles/**/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('dist/css/.css'));
+    .pipe(gulp.dest('dist/css'));
 });
 
 gulp.task("images", function (){
