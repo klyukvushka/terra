@@ -3,6 +3,16 @@ var sass = require('gulp-sass');
 var imagemin = require('gulp-imagemin');
 var concat = require('gulp-concat');
 var htmlmin = require('gulp-htmlmin');
+var browserSync = require('browser-sync').create();
+
+gulp.task('browser-sync', function() {
+  browserSync.init({
+      server: {
+          baseDir: "./dist"
+      }
+  });
+  browserSync.watch("dist", browserSync.reload)
+});
  
 gulp.task('sass', function () {
   return gulp.src('src/styles/**/*.scss')
@@ -28,7 +38,7 @@ gulp.task('html', function() {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('watch', ['sass', 'images', "javascript", "html"], function() {
+gulp.task('watch', ["browser-sync", 'sass', 'images', "javascript", "html"], function() {
     gulp.watch(['src/styles/**/*.scss'], ['sass']);
     gulp.watch(['src/images/**/*'], ['images']);
     gulp.watch(["src/javascript/*.js"], ["javascript"]);
