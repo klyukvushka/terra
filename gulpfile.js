@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var csso = require("gulp-csso");
 var imagemin = require('gulp-imagemin');
 var concat = require('gulp-concat');
 var htmlmin = require('gulp-htmlmin');
@@ -17,6 +18,7 @@ gulp.task('browser-sync', function() {
 gulp.task('sass', function () {
   return gulp.src('src/styles/**/*.scss')
     .pipe(sass().on('error', sass.logError))
+    .pipe(csso())
     .pipe(gulp.dest('dist/css'));
 });
 
