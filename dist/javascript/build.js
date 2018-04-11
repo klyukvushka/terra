@@ -1,5 +1,1 @@
-var whoIs = confirm ("Are you the user?");
-alert (whoIs);
-var x = 1;
-x = x + 1;
-alert (x);
+var whoIs=confirm("Are you the user?");alert(whoIs);var x=1;x+=1,alert(x);
